@@ -27,18 +27,18 @@ while i < int(num):
     i = i+1
 print("Позиция элеменитов списка для записи в файл:  ", position)
 
-file = open('file.txt', 'wt')
-for i in position:
-    pos = str(i)
-    file.write(pos + '\n')
+with open('file.txt', 'wt') as File: # Открытие файла для записи (если файла нет - будет создан)
+    for i in position:
+        pos = str(i)
+        File.write(pos + '\n')
 
-file = open('file.txt', 'rt')
-position_text = []
-for line in file:
-    pos_text = int(line)
-    position_text.append(pos_text)
+with open('file.txt', 'rt') as File: # Открытие файла для чтения
+    position_text = []
+    for line in File:
+        pos_text = int(line)
+        position_text.append(pos_text)
 print("Позиция элеменитов списка, прочитанная из файла:  ", position_text)
-file.close()
+File.close()
 
 mult = 1
 for i in range(len(position_text)):
